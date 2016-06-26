@@ -34,8 +34,7 @@
 
   :plugins [
     [lein-cljsbuild "1.1.3"]
-    [lein-figwheel "0.5.4-4"]
-    [lein-doo "0.1.6"]
+    [lein-figwheel "0.5.4-5"]
   ]
 
   :clean-targets ^{:protect false} [
@@ -43,9 +42,9 @@
   ]
 
   :figwheel {
-   :css-dirs        ["src/resources/css"]
-   :ring-handler    user/http-handler
-   :server-logfile "log/figwheel.log"
+    :server-ip        "127.0.0.1"
+    :css-dirs         ["resources/public/css"]
+    :server-logfile   "logs/figwheel.log"
   }
 
   :hooks [leiningen.cljsbuild]
@@ -54,7 +53,6 @@
     :dev {
       :source-paths ["src/clj"]
       :dependencies [
-        [figwheel-sidecar "0.5.4-4"]
         [binaryage/devtools "0.6.0"]
       ]
       :plugins [
@@ -74,12 +72,14 @@
     :builds [
       { :id                 "dev"
         :source-paths       ["src/cljs"]
-        :figwheel           true
+        :figwheel {
+          :on-jsload        "app.core/mount-root"
+        }
         :compiler {
           :main             app.core
-          :output-to        "target/js/app.js"
-          :output-dir       "target/js/compiled"
-          :asset-path       "target/js/compiled"
+          :asset-path       "cljs/out"
+          :output-to        "resources/public/cljs/app.js"
+          :output-dir       "resources/public/cljs/out"
           :optimizations    :none
           :source-map       true
           :source-map-timestamp true
@@ -92,7 +92,9 @@
         :source-paths       ["src/cljs"]
         :compiler {
           :main             app.core
-          :output-to        "target/js/app.js"
+          :asset-path       "cljs/out"
+          :output-to        "resources/public/cljs/app.js"
+          :output-dir       "resources/public/cljs/out"
           :optimizations    :advanced
           :closure-defines  {goog.DEBUG false}
           :pretty-print     false

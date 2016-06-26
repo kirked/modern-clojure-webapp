@@ -12,4 +12,4 @@
         [:h3 "Hello!"]
         [:div.welcome "Welcome to your application."]
         [:div "Here is the dynamic session data:"
-          [:pre (clojure.pprint/pprint @session)]]])))
+          [:pre (with-out-str (cljs.pprint/pprint @session))]]])))

@@ -1,1 +1,4 @@
+.lein-env
+logs
 target
+resources/public/cljs
