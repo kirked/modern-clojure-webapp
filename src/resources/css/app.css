@@ -1,0 +1,21 @@
+body, div, h3 {
+  font-family: "Helvetica Neue", Helvetica, "Liberation Sans", "OpenSans", Arial, sans-serif;
+  font-size: 1ex;
+  line-height: 1.4ex;
+}
+
+pre {
+  font-family: "Source Code Pro", "Menlo", "DejaVu Sans Mono", monospaced;
+  margin: 2ex 8em;
+  border: 1px solid #999;
+  border-radius: 10px;
+  background-color: #ccc;
+}
+
+h3 {
+  font-weight: 600;
+}
+
+.welcome {
+  font-style: italic;
+}
